@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- dtd파일 가져옴 => 태그 볼 수 있음 -->
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- Connection (getConnection(), disConnection()) -->
+	<!-- 오라클 정보 넘길 때 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<!-- 
+				JDBC : 자바에 맡기는 거 (자동처리)
+				MANAGED : 관리자가 관리
+			 -->
+			<dataSource type="POOLED">
+			<!-- 
+				DataSource : 데이터의 모든 정보를 가지고 있는 클래스
+				  driver, url, username, password,maxActive...
+				type
+				  POOLED : DBCP프로그램(미리 만들어 놓고 주소값 넘기기)
+				  UNPOOLED : DAO
+				  JNDI : 미리 설정(외부)
+			 -->
+			 	<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+			 	<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+			 	<property name="username" value="scott"/>
+			 	<property name="password" value="1234"/>
+			 	<!-- maxActive=8, maxIdle=8 => default값 -->
+			 </dataSource>
+		</environment>
+	</environments>
+</configuration>
